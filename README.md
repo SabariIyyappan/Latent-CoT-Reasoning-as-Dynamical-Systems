@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://sabariiyyappan.github.io/Latent-CoT/">
-    <img src="https://img.shields.io/badge/🌐%20sabariiyyappan.github.io%2FLatent--CoT-blue?style=for-the-badge" alt="Project Website"/>
+    <img src="https://img.shields.io/badge/🌐%20PROJECT%20WEBSITE-blue?style=for-the-badge" alt="Project Website"/>
   </a>
 </p>
 
