@@ -1,6 +1,10 @@
 # Interpreting Latent CoT Reasoning as Dynamical Systems
 
-[![Project Website](https://img.shields.io/badge/🌐_Project_Website-sabariiyyappan.github.io/Latent--CoT-blue?style=for-the-badge)](https://sabariiyyappan.github.io/Latent-CoT/)
+<p align="center">
+  <a href="https://sabariiyyappan.github.io/Latent-CoT/">
+    <img src="https://img.shields.io/badge/🌐%20sabariiyyappan.github.io%2FLatent--CoT-blue?style=for-the-badge" alt="Project Website"/>
+  </a>
+</p>
 
 > **Abstract.** Recent latent reasoning methods, such as CODI and
 > COCONUT, face a fundamental interpretability problem: they maintain
