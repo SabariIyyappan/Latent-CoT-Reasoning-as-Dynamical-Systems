@@ -1,0 +1,7 @@
+# Shell scripts must keep LF endings so they run on Linux/Mac
+# (a CRLF shebang yields "bad interpreter: /usr/bin/env bash^M").
+*.sh text eol=lf
+
+# Large binary artefacts tracked via Git LFS
+**/all_states.h5 filter=lfs diff=lfs merge=lfs -text
+**/dmd_spectrum.png filter=lfs diff=lfs merge=lfs -text

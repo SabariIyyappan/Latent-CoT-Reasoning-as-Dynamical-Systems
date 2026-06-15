@@ -1,0 +1,51 @@
+dataset:
+  batch_size: 1
+  n_samples: 3500
+  name: gsm8k
+  split: test
+  stratified: true
+dim_reduction:
+  dmd:
+    exact: true
+    svd_rank: -1
+  pca:
+    n_components: 2
+  phate:
+    knn: 5
+    n_components: 2
+    t: auto
+  tsne:
+    metric: euclidean
+    n_components: 2
+    perplexity: 5.0
+  umap:
+    metric: euclidean
+    min_dist: 0.1
+    n_components: 2
+    n_neighbors: 5
+experiment:
+  device: cuda
+  name: latent_cot_gsm8k_coconut
+  seed: 42
+method:
+  do_sample: false
+  latent_length: 6
+  max_new_tokens: 512
+  model_type: gpt2
+  name: coconut
+model:
+  coconut:
+    checkpoint: checkpoints/coconut
+  codi:
+    checkpoint: checkpoints/codi
+  colar:
+    checkpoint: checkpoints/colar
+output:
+  base_dir: results
+  dpi: 300
+  plot_format: png
+  save_format: h5
+stability:
+  enable_perturbation: true
+  n_perturbations: 3
+  noise_std: 0.01

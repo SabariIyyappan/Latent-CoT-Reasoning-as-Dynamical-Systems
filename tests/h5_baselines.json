@@ -1,0 +1,24 @@
+{
+  "COCONUT": {
+    "dynamic_feats/features.h5": "ebad0d907431029a4c47b1a3cea09e908cc474d711668bfb813449620cd763bd",
+    "latent_states/all_states.h5": "3ad1f553f933b66e5e9d79def20a472d7b348e4979b82fe34930f6f90ee1d1db",
+    "reduced_states/dmd_reduced.h5": "3d1af88af001f843c15e037f45a41ade41f501ac02bebc5602005752c2c2cdca",
+    "reduced_states/dmd_spectrum.h5": "6bc5a2f137b0fd2b2e78d8a9900588dc9c0ef394adb25d690a55d1e84bbe7739",
+    "reduced_states/pca_reduced.h5": "ee7ffbd543ec153f9ce327fb044d0cb09ce531bcf56ef4e20b93a4cf62e859c6",
+    "reduced_states/phate_reduced.h5": "ce65a0ccc32c7c10bb7ee15c24e2b6ed81f57a8155ff4ce3f18b766cd89e615d",
+    "reduced_states/tsne_reduced.h5": "1aa1a951156b096a1f9c0c9545168e48b0c878dc9c59c29505ef065c7d88613e",
+    "reduced_states/umap_reduced.h5": "a1dbb3883d1a296e5ac6e2fc63e24d2faafaf73be47680ac66d086724ade8842",
+    "stability_feats/stability.h5": "6f6d99dc8c654ad0580d30f29ecad4ed25ad5d4ec0e0ebfd60fa718c350f782c"
+  },
+  "CODI": {
+    "dynamic_feats/features.h5": "56c57f2a19d214549214f217fc60b88d27d9c789ffb1408d0d613eee89392a57",
+    "latent_states/all_states.h5": "21a78df6f0dbd103f07abf8dba7ededcf7bfd227992ddc767675599dafe7bdec",
+    "reduced_states/dmd_reduced.h5": "92c7ea64e25d40e43d464a6dd6d577e2b143dbff98e3febee94ea8824087242d",
+    "reduced_states/dmd_spectrum.h5": "216cf8e80562f3b8a571f5014264e5315099339302a014a369aa13e24473b2db",
+    "reduced_states/pca_reduced.h5": "d42d20a09c9e5329393e97382ff926ff93cc90885b2ca1ca13abbd8560ca642c",
+    "reduced_states/phate_reduced.h5": "d581dc3fcc79fb8b06892bf2d8eec27a770c35931bc27c34277038f90001b0f6",
+    "reduced_states/tsne_reduced.h5": "aff906dfa2ae4aac3655fb2416b4c72f105d66f4a412fcfbb363c82ec9ada23d",
+    "reduced_states/umap_reduced.h5": "c096569a15840467ce6fc7ed6ce18dcc7e2a54fe020d0c9a309df7aad3093984",
+    "stability_feats/stability.h5": "8f736eeeae825d6a27b593846e24a21e79129635edffef8c2067b78c2db5a3bf"
+  }
+}

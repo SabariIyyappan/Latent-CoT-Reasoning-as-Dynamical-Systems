@@ -1,0 +1,13 @@
+{
+  "method": "coconut",
+  "checkpoint": "checkpoints\\simcot_coconut_gpt2",
+  "model_class": "COCONUTGPT2",
+  "n_samples": 8792,
+  "n_correct": 6130,
+  "accuracy_pct": 69.72247497725205,
+  "num_latent": 6,
+  "hidden_size": 768,
+  "extractor": "scripts/extract_simcot_canonical.py",
+  "loop_origin": "SIM-CoT/CODI/test.py:263-306 canonical inference loop",
+  "produced_at": "20260502_211629"
+}

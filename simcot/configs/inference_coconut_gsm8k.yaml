@@ -1,0 +1,73 @@
+# Latent COT Dynamical Systems Analysis on GSM8K (full train+test) for the
+# SIM-CoT GPT-2 Coconut release.
+#
+# The checkpoint at checkpoints/simcot_coconut_gpt2/ is produced by
+# simcot/bootstrap_coconut.py from the InternLM HF release
+# (internlm/SIM_COT-GPT2-Coconut). The bootstrap drops the
+# auxiliary supervised decoder, registers the three latent special
+# tokens at IDs 50257-50259 to match the trained extra embedding rows,
+# and saves a transformers-compatible checkpoint that runner.py loads
+# through the existing COCONUTGPT2 + LatentGenerationMixin path.
+#
+# Per-concept trajectory figures (in addition to the pooled and
+# concept-coloured views) land under plots/per_concept/ in the run dir.
+#
+# Launch (runner.py bootstraps the checkpoint automatically if missing):
+#   python runner.py --paradigm simcot --method coconut
+
+experiment:
+  name: "latent_cot_gsm8k_simcot_coconut"
+  seed: 42
+  device: "cuda"
+
+method:
+  name: "coconut"
+  model_type: "gpt2"
+  latent_length: 6
+  max_new_tokens: 512
+  do_sample: false
+
+model:
+  coconut:
+    checkpoint: "checkpoints/simcot_coconut_gpt2"
+  codi:
+    checkpoint: "checkpoints/simcot_codi_gpt2"
+
+dataset:
+  name: "gsm8k"
+  split: "train+test"    # full 8,792 rows
+  n_samples: 20000       # > dataset size so no bucket is capped
+  stratified: true
+  batch_size: 1
+
+dim_reduction:
+  pca:
+    n_components: 2
+  tsne:
+    n_components: 2
+    perplexity: 5.0
+    metric: "euclidean"
+  umap:
+    n_components: 2
+    n_neighbors: 5
+    min_dist: 0.1
+    metric: "euclidean"
+  dmd:
+    svd_rank: -1
+    exact: true
+  phate:
+    n_components: 2
+    knn: 5
+    t: "auto"
+
+# Defaults for the separate perturbation flow:
+#   python runner.py --paradigm simcot --method coconut --perturbation
+perturbation:
+  noise_std: 0.01
+  n_perturbations: 3
+
+output:
+  base_dir: "results"
+  save_format: "h5"
+  plot_format: "png"
+  dpi: 300
