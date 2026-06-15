@@ -339,7 +339,7 @@ If you use this code, please cite the paper:
   booktitle = {ICML 2026 Workshop on Foundations of Deep Generative Models:
                Understanding Memorization, Generalization, and Reasoning},
   year      = {2026},
-  url       = {https://github.com/SabariIyyappan/Latent-CoT}
+  url       = {https://github.com/SabariIyyappan/Latent-CoT-Reasoning-as-Dynamical-Systems}
 }
 ```
 
