@@ -201,6 +201,9 @@ Each script defaults to the vanilla + codi cell; pick another with the
 bash pipeline_scripts/main_pipeline.sh
 PARADIGM=simcot METHOD=coconut bash pipeline_scripts/main_pipeline.sh
 
+# quick smoke first (few samples, CPU) before a full run
+N_SAMPLES=5 DEVICE=cpu bash pipeline_scripts/main_pipeline.sh
+
 # do/reuse the H5 latent prep, then perturbation analysis
 PARADIGM=simcot METHOD=codi NOISE_STD=0.1 bash pipeline_scripts/perturb_pipeline.sh
 ```

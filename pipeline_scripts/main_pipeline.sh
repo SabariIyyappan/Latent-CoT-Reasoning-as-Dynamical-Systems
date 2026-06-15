@@ -10,6 +10,9 @@
 #
 # Pick a different cell with the PARADIGM / METHOD variables:
 #     PARADIGM=simcot METHOD=coconut bash pipeline_scripts/main_pipeline.sh
+#
+# Quick smoke run (few samples, CPU) before committing to a full run:
+#     N_SAMPLES=5 DEVICE=cpu bash pipeline_scripts/main_pipeline.sh
 # ----------------------------------------------------------------------
 set -euo pipefail
 
@@ -44,9 +47,16 @@ cd "${REPO_ROOT}"
 #     PARADIGM=simcot  METHOD=coconut
 PARADIGM="${PARADIGM:-vanilla}"
 METHOD="${METHOD:-codi}"
+# Optional smoke-test knobs — leave N_SAMPLES empty for the full dataset.
+N_SAMPLES="${N_SAMPLES:-}"
+DEVICE="${DEVICE:-}"
 
 # ── 5. Run the main analysis pipeline ─────────────────────────────────
 # Writes results/<paradigm>_<method>/<timestamp>/ with the latent-state
 # HDF5, all reductions, trajectory features, and figures for this cell.
-echo "[main_pipeline] paradigm=${PARADIGM}  method=${METHOD}"
-python runner.py --paradigm "${PARADIGM}" --method "${METHOD}"
+EXTRA=()
+[[ -n "${N_SAMPLES}" ]] && EXTRA+=(--n_samples "${N_SAMPLES}")
+[[ -n "${DEVICE}" ]] && EXTRA+=(--device "${DEVICE}")
+
+echo "[main_pipeline] paradigm=${PARADIGM}  method=${METHOD}  ${EXTRA[*]:-}"
+python runner.py --paradigm "${PARADIGM}" --method "${METHOD}" ${EXTRA[@]+"${EXTRA[@]}"}

@@ -12,6 +12,9 @@
 #
 # Pick a different cell / noise level:
 #     PARADIGM=simcot METHOD=codi NOISE_STD=0.1 bash pipeline_scripts/perturb_pipeline.sh
+#
+# Quick smoke run (cap samples, CPU) before committing to a full run:
+#     MAX_SAMPLES=3 DEVICE=cpu bash pipeline_scripts/perturb_pipeline.sh
 # ----------------------------------------------------------------------
 set -euo pipefail
 
@@ -48,6 +51,10 @@ cd "${REPO_ROOT}"
 PARADIGM="${PARADIGM:-vanilla}"
 METHOD="${METHOD:-codi}"
 NOISE_STD="${NOISE_STD:-0.01}"
+# Optional smoke-test knobs — leave empty for the full run.
+DEVICE="${DEVICE:-}"          # cpu | cuda
+MAX_SAMPLES="${MAX_SAMPLES:-}" # cap the perturbed questions
+N_SAMPLES="${N_SAMPLES:-}"    # cap the prep run if the H5 has to be built first
 
 # ── 5. Run the perturbation pipeline ──────────────────────────────────
 # Find the newest cached run for this cell; if none exists, prepare the
@@ -63,11 +70,18 @@ latest_run_with_h5() {
 RUN_DIR="$(latest_run_with_h5)"
 if [[ -z "${RUN_DIR}" ]]; then
   echo "[perturb_pipeline] no cached H5 for ${PARADIGM}_${METHOD} — preparing it first"
-  python runner.py --paradigm "${PARADIGM}" --method "${METHOD}"
+  PREP=()
+  [[ -n "${N_SAMPLES}" ]] && PREP+=(--n_samples "${N_SAMPLES}")
+  [[ -n "${DEVICE}" ]] && PREP+=(--device "${DEVICE}")
+  python runner.py --paradigm "${PARADIGM}" --method "${METHOD}" ${PREP[@]+"${PREP[@]}"}
   RUN_DIR="$(latest_run_with_h5)"
 fi
 
-echo "[perturb_pipeline] paradigm=${PARADIGM}  method=${METHOD}  noise_std=${NOISE_STD}"
+EXTRA=()
+[[ -n "${MAX_SAMPLES}" ]] && EXTRA+=(--max_samples "${MAX_SAMPLES}")
+[[ -n "${DEVICE}" ]] && EXTRA+=(--device "${DEVICE}")
+
+echo "[perturb_pipeline] paradigm=${PARADIGM}  method=${METHOD}  noise_std=${NOISE_STD}  ${EXTRA[*]:-}"
 echo "[perturb_pipeline] run_dir=${RUN_DIR}"
 python runner.py --paradigm "${PARADIGM}" --method "${METHOD}" \
-    --perturbation --run_dir "${RUN_DIR}" --noise_std "${NOISE_STD}"
+    --perturbation --run_dir "${RUN_DIR}" --noise_std "${NOISE_STD}" ${EXTRA[@]+"${EXTRA[@]}"}

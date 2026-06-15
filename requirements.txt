@@ -1,0 +1,35 @@
+# ----------------------------------------------------------------------
+# Dependencies for the Latent CoT dynamical-systems analysis pipeline.
+#
+# Versions are lower bounds known to work; the comments note the exact
+# versions used for the paper runs. torch is listed without a CUDA local
+# version so this file stays portable: `pip install torch` gives a CPU
+# build, which is enough for analysis/plotting and CPU smoke tests. For
+# GPU inference, install the build matching your CUDA from
+# https://pytorch.org (the paper used torch 2.11 with CUDA 12.8).
+# ----------------------------------------------------------------------
+
+# Deep-learning stack
+torch>=2.4                 # paper: 2.11.0+cu128
+transformers>=4.52         # paper: 4.52.x
+datasets>=3.0
+huggingface_hub>=0.26
+peft>=0.15                 # SimCoT CODI bootstrap (LoRA merge)
+safetensors>=0.4
+
+# Numerics + IO
+numpy>=1.26
+scipy>=1.11
+h5py>=3.10
+pyyaml>=6.0
+
+# Dimensionality reduction
+scikit-learn>=1.4          # PCA / t-SNE
+umap-learn>=0.5.5          # UMAP
+phate>=1.0                 # PHATE
+
+# Plotting
+matplotlib>=3.8
+
+# Testing
+pytest>=8.0
