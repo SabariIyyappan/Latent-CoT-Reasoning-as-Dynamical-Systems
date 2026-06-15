@@ -1,5 +1,7 @@
 # Interpreting Latent CoT Reasoning as Dynamical Systems
 
+[![Project Website](https://img.shields.io/badge/🌐_Project_Website-sabariiyyappan.github.io/Latent--CoT-blue?style=for-the-badge)](https://sabariiyyappan.github.io/Latent-CoT/)
+
 > **Abstract.** Recent latent reasoning methods, such as CODI and
 > COCONUT, face a fundamental interpretability problem: they maintain
 > multiple superimposed candidate traces in the hidden space at each
