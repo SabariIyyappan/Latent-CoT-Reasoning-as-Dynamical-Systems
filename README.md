@@ -335,16 +335,19 @@ If you use this code, please cite the paper:
 
 ```bibtex
 @inproceedings{latentcot-dynamical-systems-2026,
-  title     = {Interpreting Latent CoT Reasoning as Dynamical Systems},
+  title     = {Interpreting Latent {CoT} Reasoning as Dynamical Systems},
+  author    = {Duraipandian, Sabari Iyyappan and
+               Boyane, Shreya Sanjay and
+               Nagesh, Manju and
+               Francis, Jerome and
+               Vaidheeswaran, Archana and
+               Zhu, Kevin},
   booktitle = {ICML 2026 Workshop on Foundations of Deep Generative Models:
                Understanding Memorization, Generalization, and Reasoning},
   year      = {2026},
-  url       = {https://github.com/SabariIyyappan/Latent-CoT}
+  url       = {https://github.com/SabariIyyappan/Latent-CoT-Reasoning-as-Dynamical-Systems}
 }
 ```
-
-> The author list and arXiv identifier will be added to this entry once
-> the camera-ready is posted (the workshop submission is anonymous).
 
 ---
 
